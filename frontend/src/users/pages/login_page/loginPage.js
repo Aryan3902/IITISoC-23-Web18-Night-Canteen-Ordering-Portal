@@ -1,11 +1,14 @@
 import React from "react";
-import Background from "../components/background";
-import Button from "../components/button";
-import LoginBar from "../components/loginBar";
-import '.\loginPage.css' ;
+import Background from "./background";
+import Button from "./button";
+import LoginBar from "./loginBar";
+import './loginPage.css' ;
+import Navbar3 from "../../components/Navbar3";
 
-function loginPage() {
+function LoginPage() {
     return (
+        <>
+        <Navbar3 />
         <div id="container">
 <Background />
 <div id="login-background"></div>
@@ -31,8 +34,8 @@ function loginPage() {
     </div>
 </div>
 </div>
-
+</>
     );
 }
 
-export default loginPage;
+export default LoginPage;
