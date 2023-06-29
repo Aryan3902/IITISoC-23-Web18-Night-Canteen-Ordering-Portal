@@ -9,16 +9,16 @@ function LoginPage() {
     return (
         <>
         <Navbar3 />
-        <div id="container">
+        <div className="container">
 <Background />
-<div id="login-background"></div>
-<div id="login-container">
-    <div id="login-text">
+<div className="login-background"></div>
+<div className="login-container">
+    <div className="login-text">
         <p id="login">Login</p>
         <svg width="135" height="3" viewBox="0 0 135 3" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2 1.5H133" stroke="black" strokeWidth="3" strokeLinecap="round"/>
         </svg>
-        <p id="sign-in">Sign in to your account</p>
+        <p className="sign-in">Sign in to your account</p>
     </div>
     <div className="user-identiy-button-container">
         <Button identity="User" status="selected"/>
