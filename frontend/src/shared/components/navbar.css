@@ -1,0 +1,106 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
+.navbar-container{
+    display: flex;
+    position: relative;
+    margin: 0 5%;
+    background-color: rgb(255, 255, 255,0.25);
+    height: 48px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 0.5rem;
+}
+.logo-name{
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.logo{
+    mix-blend-mode: multiply;
+    height: 50px;
+}
+.name{
+    font: 1.5rem 'Road Rage', cursive;
+    z-index: 99;
+}
+.navitems{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0 11%;
+    padding: 0;
+    gap: 1.5rem;
+    flex-grow: 1;
+}
+.icons-container{
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+    align-items: center;
+
+}
+.nav-bar-links{
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    padding: 6px 18px;
+    
+
+}
+.nav-bar-links:hover{
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.nav-button{
+    background-color: var(--primary-color);
+    border-radius: 2.2rem;
+
+    color: white;
+}
+.icons{
+    color: black;
+}
+.hamburger-menu{
+    display: none;
+}
+
+@media screen and (max-width:955px){
+
+.navitems {
+    display: flex;
+    position: absolute;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1.5rem;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255,0.25);
+    border-radius:0 0 0.5rem 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+.navitems.active{
+    top:48px
+}
+.navbar-container{
+    border-radius: 0.5rem 0.5rem 0 0 ;
+}
+.hamburger-menu{
+    display:block;
+}
+.nav-button{
+    background-color: #ffffff00;
+    border-radius:0;
+
+    color: black;
+}
+}

@@ -7,4 +7,5 @@ body {
     width: 100dvw;
     background-color: #f6ccb0;
     filter: blur(200px);
+    z-index: -1;
 }

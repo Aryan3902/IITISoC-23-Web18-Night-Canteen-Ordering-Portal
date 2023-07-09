@@ -21,20 +21,20 @@ export default function Navbar3() {
                         <ul className="navbar-nav">
 
                             <li className="nav-item mx-md-4 px-md-3">
-                                <button className="btn btn-sm rounded-pill btn-outline-warning" style={{ border: "none" }} >
+                                <button className="btn btn-sm btn-outline-warning" style={{ border: "none" }} >
                                     <a className="nav-link navText" aria-current="page" href="/home">  Home  </a></button>
                             </li>
                             <li className="nav-item mx-md-4 px-md-3">
-                                <button className="btn btn-sm rounded-pill btn-outline-warning" style={{ border: "none" }} >
+                                <button className="btn btn-sm btn-outline-warning" style={{ border: "none" }} >
                                     <a className="nav-link navText" aria-current="page" href="#">  Menu  </a></button>
                             </li>
                             <li className="nav-item mx-md-4 px-md-3">
-                                <button className="btn btn-sm rounded-pill btn-outline-warning" style={{ border: "none" }} >
+                                <button className="btn btn-sm btn-outline-warning" style={{ border: "none" }} >
                                     <a className="nav-link navText" aria-current="page" href="#"> About </a></button>
                             </li>
                             <li className="nav-item mx-md-4 px-md-3">
-                                <button className="btn btn-sm rounded-pill btn-outline-warning" style={{ border: "none" }} >
-                                    <a className="nav-link navText" aria-current="page" href="#">Services</a></button>
+                                 
+                                    <a className="nav-link navText btn btn-sm btn-outline-warning" style={{ border: "none",height:"32px" ,borderRadius: "25px" }}  aria-current="page" href="#">Services</a>
                             </li>
 
                         </ul>
@@ -43,12 +43,10 @@ export default function Navbar3() {
                     <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <ul className="navbar-nav">
                             <li className="nav-item mx-md-4 px-md-3">
-                                <button className="btn btn-sm rounded-pill btn-outline-warning" style={{ border: "none" }} >
-                                    <a className="nav-link navText" aria-current="page" href="#"><FaUser /></a></button>
+                                <a className="nav-link navText" aria-current="page" href="#"><FaUser /></a>
                             </li>
                             <li className="nav-item mx-md-4 px-md-3">
-                                <button className="btn btn-sm rounded-pill btn-outline-warning" style={{ border: "none" }} >
-                                    <a className="nav-link navText" aria-current="page" href="#"><FaCartShopping /></a></button>
+                                <a className="nav-link navText" aria-current="page" href="#"><FaCartShopping /></a>
                             </li>
                         </ul>
                     </div>
