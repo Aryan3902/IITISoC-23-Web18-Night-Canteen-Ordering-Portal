@@ -4,3 +4,6 @@
     flex-wrap: wrap;
     gap: 36px;
 }
+.category-name {
+    font: 2rem 'Roboto', sans-serif;
+}

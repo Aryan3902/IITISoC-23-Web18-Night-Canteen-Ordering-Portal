@@ -7,12 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import Navbar from './shared/components/Navbar';
 import MenuPage from './foodItems/Pages/menuPage';
 import Background from './users/components/background';
+import Navbar3 from './shared/components/Navbar3';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Background />
-    <MenuPage />
+    <Navbar3 />
   </React.StrictMode>
 );
 

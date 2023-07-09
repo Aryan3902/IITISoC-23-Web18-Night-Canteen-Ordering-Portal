@@ -45,15 +45,18 @@ export default function MenuPage(){
     })}
 
     return (
+        // <div className="box">
+        //     <div className="first-column">
+        //        <FoodItems handleClick={handleClick}/>
+        //     </div>
+        //     <div className="second-column">
+        //     </div>
+        //     <div className="third-column">
+        //         <Cart size={cart.length} cart={cart} setCart={setCart} handleChange={handleChange}/>
+        //     </div>
+        // </div>
         <div className="box">
-            <div className="first-column">
-               <FoodItems handleClick={handleClick}/>
-            </div>
-            <div className="second-column">
-            </div>
-            <div className="third-column">
-                <Cart size={cart.length} cart={cart} setCart={setCart} handleChange={handleChange}/>
-            </div>
+            <FoodItems handleClick={handleClick} />
         </div>
     );
 }
