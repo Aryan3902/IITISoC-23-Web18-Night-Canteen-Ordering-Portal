@@ -2,11 +2,12 @@
 .box {
     position: absolute;
     display: grid;
-    width: 100%;
+    width: 100dvw;
     grid-template-columns: 850px auto 450px ;
     grid-template-rows: auto ;
     padding: 40px;
     padding-bottom: 0;
+    box-sizing: border-box;
 
 }
 

@@ -26,20 +26,23 @@ export default function MenuPage(){
     }
 
     const handleChange =(item, d)=>{
-        let ind = -1;
-		cart.forEach((data, index)=>{
+        let ind = cart.findIndex((data)=>data.id===item.id);
+		// cart.forEach((data, index)=>{
         
             
-			if (data.id === item.id)
-				ind = index;
-		});
-		const tempArr = cart;
-		tempArr[ind].amount += d;
+		// 	if (data.id === item.id)
+		// 		ind = index;
+		// });
+		// const tempArr = cart;
+		// tempArr[ind].amount += d;
 		
-		if (tempArr[ind].amount === 0)
-			tempArr[ind].amount = 1;
-		setCart([...tempArr])
-    }
+		// if (tempArr[ind].amount === 0)
+		// 	tempArr[ind].amount = 1;
+		// setCart([...tempArr])
+        setCart((prevValue)=>{
+            prevValue[ind].amount +=d;
+            return [...prevValue ]
+    })}
 
     return (
         <div className="box">

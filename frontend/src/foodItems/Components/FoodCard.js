@@ -32,8 +32,8 @@ export default function FoodCard({cartItem, handleChange, handleRemove}){
                 <button onClick={()=>handleRemove(cartItem.id)} className="remove-button" >
                 <svg width="15" height="15" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="12" height="12" rx="3" fill="#FFA9A9"/>
-                    <path d="M3 3L8.65685 8.65685" stroke="#FFF2F2" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M3 8.65686L8.65685 3.00001" stroke="#FFF2F2" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M3 3L8.65685 8.65685" stroke="#FFF2F2" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M3 8.65686L8.65685 3.00001" stroke="#FFF2F2" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
 
                 </button>

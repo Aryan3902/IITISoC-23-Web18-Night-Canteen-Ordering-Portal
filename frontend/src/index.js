@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import Navbar3 from './shared/components/Navbar3';
+import Navbar from './shared/components/Navbar';
+import MenuPage from './foodItems/Pages/menuPage';
+import Background from './users/components/background';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Background />
+    <MenuPage />
   </React.StrictMode>
 );
 
