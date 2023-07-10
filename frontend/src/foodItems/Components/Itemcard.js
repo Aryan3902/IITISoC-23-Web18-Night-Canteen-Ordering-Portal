@@ -7,7 +7,7 @@ export default function Itemcard({item, handleClick}){
     const {name, price}=item;
     return (
         <div className="item-card">
-            <img />
+            <img alt="item" />
             <div className="bottom-part" >
                 <p className="name">{name}</p>
                 <div className="price-tag">

@@ -7,17 +7,17 @@ const navItemsData = [
 {
     id:2,
     title: "Menu",
-    url:"/",      
+    url:"/menu",      
 },
 {
     id:3,
     title: "About",
-    url:"/",      
+    url:"/about",      
 },
 {
     id:4,
     title: "Services",
-    url:"/",      
+    url:"/services",      
 },
     
 

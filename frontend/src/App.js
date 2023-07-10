@@ -1,23 +1,54 @@
 import './App.css';
-
+import Cart from './foodItems/Components/Cart';
+import React, {useState} from 'react'
 import MenuPage from './foodItems/Pages/menuPage';
-import Background from "./users/components/background"
-// import About from './components/About'
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import Navbar from './shared/components/Navbar';
+import Background from "./users/components/background";
+import { BrowserRouter, Routes, Route,} from "react-router-dom";
+import Home from './users/pages/home/Home';
 
-function App() {
+
+
+export default function App() {
+  const [cart, setCart]=useState([]);
+    
+  const handleClick= (item)=>{
+        let isPresent=false;
+        cart.forEach((product)=>{
+            if(item.id===product.id){
+                isPresent =true;
+            }
+        })
+        if(isPresent){
+            return;
+        }
+        else {  
+            setCart([...cart,item]);
+        }
+    }
+
+  const handleChange =(item, d)=>{
+      let ind = cart.findIndex((data)=>data.id===item.id);
+      setCart((prevValue)=>{
+          prevValue[ind].amount +=d;
+          if (prevValue[ind].amount === 0) prevValue[ind].amount = 1;
+          return [...prevValue ];
+  })}
+
   return (
-    <>
+    <BrowserRouter>
       <Background />
-      <MenuPage />
-    </>
+      <Navbar size={cart.length} />
+      <Routes>
+        <Route path="/about" element={<div></div>}/>
+        <Route path='/services' element={<div></div>} />
+        <Route path="/" element={<Home />} />
+        <Route path='/menu' element={<MenuPage handleClick={handleClick} /> } />
+        <Route path='/cart' element={<Cart size={cart.length} cart={cart} setCart={setCart} handleChange={handleChange} />} />
+      </Routes> 
+    </BrowserRouter>
+    
   );
 }
 
-export default App;
+

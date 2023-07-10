@@ -7,7 +7,7 @@ import menuItems from "../Arrays/menuitems";
 export default function CategoryType({category, handleClick}){
     const {name}=category;
     function createItemCard(item){
-        return (name==item.category)&&(<Itemcard key={item.id} item={item} handleClick={handleClick} />)
+        return (name===item.category)&&(<Itemcard key={item.id} item={item} handleClick={handleClick} />)
     }
 
     return (
