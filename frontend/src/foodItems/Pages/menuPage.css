@@ -1,6 +1,6 @@
 
 .box {
-    position: absolute;
+    position: relative;
     /* display: grid; */
     width: 100dvw;
     /* grid-template-columns: 850px auto 450px ;

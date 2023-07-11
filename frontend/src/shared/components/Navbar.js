@@ -8,6 +8,7 @@ import Logo from '../../Images/Logo.png'
 export default function Navbar({size}) {
   const [isClicked,setClicked]=useState(false);
 
+
   const removeButton=()=>{
     const elements = document.getElementsByClassName("nav-bar-links");
     [...elements].forEach(element => {element.classList.remove("nav-button")});
