@@ -1,5 +1,5 @@
 import React from "react";
-
+import './loginBar.css'
 function LoginBar(props){
     return (
         <div className="login-bar">

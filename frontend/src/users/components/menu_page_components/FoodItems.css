@@ -1,0 +1,9 @@
+.card-container {
+    display: flex;
+    padding: 36px 0 ;
+    flex-wrap: wrap;
+    gap: 36px;
+}
+.category-name {
+    font: 2rem 'Roboto', sans-serif;
+}
