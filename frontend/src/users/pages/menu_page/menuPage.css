@@ -8,6 +8,7 @@
     padding: 40px;
     padding-bottom: 0;
     box-sizing: border-box;
+    z-index: -1;
 
 }
 

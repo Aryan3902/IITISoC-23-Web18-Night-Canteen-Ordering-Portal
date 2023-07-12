@@ -1,19 +1,13 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
 :root{
     --primary-color: #FB983E;
   }
 
-.navbar-div{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #fef2e5;
-    z-index: 1000000;
-}
-
 .navbar-container{
     display: flex;
-    position: relative;
+    position: sticky;
+    top: 0;
     margin: 0 5%;
     background-color: rgb(255, 255, 255,0.25);
     height: 48px;
@@ -21,8 +15,8 @@
     align-items: center;
     padding: 0 16px;
     border-radius: 0.5rem;
+    z-index: 99;
 }
-
 .logo-name{
     display: flex;
     align-items: center;
@@ -31,7 +25,7 @@
     cursor: pointer;
 }
 .logo{
-    mix-blend-mode: multiply;
+    mix-blend-mode: color-burn;
     height: 50px;
 }
 .name{
@@ -56,12 +50,12 @@
 }
 .nav-bar-links{
     color: black;
+    text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     padding: 6px 18px;
-    border: none;
-    border-radius: 2.2rem;
-    background-color: #ffffff00;
+    
+
 }
 .nav-bar-links:hover{
     color: var(--primary-color);
@@ -69,35 +63,42 @@
     transition: all 0.2s ease-in-out;
 }
 .nav-button{
-    background-color: var(--primary-color);
-    border-radius: 2.2rem;
-
     color: white;
+    background-color: var(--primary-color);
+    border-radius: 2.2rem;   
 }
-.navbar-buttons-without-click{
-    border-radius: 2.2rem;
-    border:none;
-    background-color: gray;
-    transition: 0.2s ease-in-out all;
-}
-.navbar-buttons-with-click{
-    border-radius: 2.2rem;
-    border:none;
-    background-color: orange;
-    transition: 0.2s ease-in-out all;
+.nav-button:hover{
+    color: white; 
 }
 .icons{
+    position: relative;
     color: black;
 }
 .hamburger-menu{
     display: none;
 }
+.circle-cart{
+    position: absolute;
+    inset: -8px -8px auto auto;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    padding: 0;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+}
+
+
 
 @media screen and (max-width:955px){
 
 .navitems {
     display: flex;
     position: absolute;
+    z-index: 99;
     top: -100vh;
     left: 0;
     width: 100%;
@@ -111,7 +112,8 @@
     box-sizing: border-box;
     background-color: rgb(255, 255, 255,0.25);
     border-radius:0 0 0.5rem 0.5rem;
-    transition: all 0.3s ease-in-out;
+    transition: all 300ms linear ease-out;
+    backdrop-filter: blur(10px);
 }
 .navitems.active{
     top:48px
@@ -128,4 +130,5 @@
 
     color: black;
 }
+
 }
