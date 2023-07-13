@@ -1,7 +1,7 @@
 import React from "react";
 import './CategoryType.css'
 import Itemcard from "./Itemcard";
-import menuItems from "../Arrays/menuitems";
+import menuItems from "../../Arrays/menuitems";
 
 
 export default function CategoryType({category, handleClick}){

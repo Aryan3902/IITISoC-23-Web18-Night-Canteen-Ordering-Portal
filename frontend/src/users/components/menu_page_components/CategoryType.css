@@ -13,3 +13,9 @@
     gap: 36px;
     margin: 36px 0;
 }
+
+@media screen and (max-width:570px) {
+    .item-container{
+        justify-content: center;
+    }
+}

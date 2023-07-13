@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./navbar.css";
-import navItemsData from './NavItemsData';
+import navItemsData from '../../Arrays/NavItemsData';
 import { Icon } from '@iconify/react';
-import Logo from '../../Images/Logo.png'
+import Logo from '../../../Images/Logo.png'
 
 export default function Navbar({size}) {
   const [isClicked,setClicked]=useState(false);

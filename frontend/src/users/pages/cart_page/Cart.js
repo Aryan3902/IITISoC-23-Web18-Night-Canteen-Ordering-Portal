@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FoodCard from "./FoodCard";
+import FoodCard from "../../components/Cart_page_components/FoodCard";
 import './Cart.css'
 
 
@@ -14,11 +14,9 @@ export default function Cart({size, cart,setCart, handleChange}){
     useEffect(()=>{
         handlePrice();
     })
-
     const handleRemove = (id) =>{
         const arr = cart.filter((item)=>item.id !== id);
         setCart(arr);
-        // handlePrice();
     }
 return (
     <div className="cart">

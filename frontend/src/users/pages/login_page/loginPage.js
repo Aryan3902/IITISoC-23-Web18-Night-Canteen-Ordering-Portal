@@ -1,13 +1,12 @@
 import React from "react";
-import Background from "../components/background";
-import Button from "../components/button";
-import LoginBar from "../components/loginBar";
+
 import '.\loginPage.css' ;
+import Button from "../../components/login_page_components/button";
+import LoginBar from "../../components/login_page_components/loginBar";
 
 function loginPage() {
     return (
         <div id="container">
-<Background />
 <div id="login-background"></div>
 <div id="login-container">
     <div id="login-text">

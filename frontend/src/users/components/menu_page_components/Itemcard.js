@@ -9,7 +9,7 @@ export default function Itemcard({item, handleClick}){
         <div className="item-card">
             <img alt="item" />
             <div className="bottom-part" >
-                <p className="name">{name}</p>
+                <p className="food-name">{name}</p>
                 <div className="price-tag">
                     <p className="price">₹{price}</p>
                     <button  onClick={()=>handleClick(item)}>

@@ -1,17 +1,10 @@
 
 .box {
     position: relative;
-    /* display: grid; */
-    width: 100dvw;
-    /* grid-template-columns: 850px auto 450px ;
-    grid-template-rows: auto ; */
+    width: auto;
     padding: 40px;
+    margin: 0 5%;
     padding-bottom: 0;
-    box-sizing: border-box;
-    z-index: -1;
+    box-sizing: content-box;
 
 }
-
-
-
-

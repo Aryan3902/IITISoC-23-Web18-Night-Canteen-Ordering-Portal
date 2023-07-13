@@ -1,7 +1,8 @@
 import React from "react";
 import './menuPage.css'
+import FoodItems from "../../components/menu_page_components/FoodItems";
 
-import FoodItems from "../Components/FoodItems";
+
 
 
 

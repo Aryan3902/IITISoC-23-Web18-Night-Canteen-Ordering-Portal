@@ -10,7 +10,7 @@ export default function Hero() {
       <p style={{marginLeft:"80px"}}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, aliquam tempora? Delectus nemo nisi debitis adipisci iure neque necessitatibus expedita ex quas odio? Reiciendis alias quidem architecto. Nostrum, a quaerat?
       </p>
-      <img className='hero-photo' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWbh6Bu1EncJmpeFof8if_S3KsKFHXWmXxsa7BRT8E4e4FsCEi3bz5WPog8_YbwHaW7I0&usqp=CAU" alt="night-canteen-photo" />
+      <img className='hero-photo' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWbh6Bu1EncJmpeFof8if_S3KsKFHXWmXxsa7BRT8E4e4FsCEi3bz5WPog8_YbwHaW7I0&usqp=CAU" alt="night-canteen" />
     </div>
   )
 }
