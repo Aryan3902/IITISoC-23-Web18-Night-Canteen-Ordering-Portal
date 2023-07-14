@@ -20,9 +20,9 @@ export default function Navbar({size}) {
   
   const handleMenu=()=>{
     setTimeout( ()=>{setClicked(!isClicked);
-    document.getElementsByClassName("navitems")[0].classList.toggle("active");}
-      ,300);
-    
+    document.getElementsByClassName("navbar-container")[0].classList.toggle("active");
+    document.getElementsByClassName("navitems")[0].classList.toggle("active");} 
+    ,300);
   }
   return (
     <nav className="navbar-container">

@@ -12,7 +12,7 @@ import Home from './users/pages/home/Home';
 export default function App() {
   const getLocalCartData = ()=>{
     let localCartData= localStorage.getItem("FoodCart");
-    if(localCartData===[]){
+    if(localCartData){
       return [];
     }
     else{
