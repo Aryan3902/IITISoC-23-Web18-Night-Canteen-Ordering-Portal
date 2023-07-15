@@ -1,6 +1,6 @@
 import React from "react";
-import "./loginPage.css";
-
+import "../../pages/login_page/loginPage.css";
+import './button.css'
 function Button(props) {
     return(
         <button className={"button "+props.status} >{props.identity}</button>

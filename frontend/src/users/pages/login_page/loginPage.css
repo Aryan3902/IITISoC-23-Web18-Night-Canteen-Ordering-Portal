@@ -6,6 +6,7 @@
 }
 
 .login-background {
+.login-background {
   position: absolute;
   width: 374px;
   height: 526px;
@@ -14,6 +15,7 @@
   filter: blur(1px);
 }
 
+.login-container {
 .login-container {
   position: absolute;
   width: 374px;
@@ -28,12 +30,13 @@
 }
 
 .login-text {
+.login-text {
   position: absolute;
   left: 40px;
   top: 35px;
 }
 
-#sign-in {
+.sign-in {
   color: #000;
   font-size: 12px;
   font-family: "Roboto", sans-serif;
