@@ -1,11 +1,11 @@
-#container {
+.login-page-container {
   display: flex;
   height: 100vh;
   align-items: center;
   justify-content: center;
 }
 
-#login-background {
+.login-background {
   position: absolute;
   width: 374px;
   height: 526px;
@@ -14,12 +14,12 @@
   filter: blur(1px);
 }
 
-#login-container {
+.login-container {
   position: absolute;
   width: 374px;
   height: 526px;
 }
-#login {
+.login {
   color: #000;
   font-size: 49.522px;
   font-family: "Open Sans", sans-serif;
@@ -27,7 +27,7 @@
   padding: 0;
 }
 
-#login-text {
+.login-text {
   position: absolute;
   left: 40px;
   top: 35px;
