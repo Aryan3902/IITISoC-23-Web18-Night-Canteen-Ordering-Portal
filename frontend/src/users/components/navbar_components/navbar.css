@@ -1,8 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
-:root{
-    --primary-color: #FB983E;
-  }
+
+
+
 
 .navbar-container{
     display: flex;

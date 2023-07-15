@@ -1,4 +1,4 @@
-const menuItems=[{
+const menuItems_capital=[{
     id:1,
     name:"TEA",
     category:"HOT BEVERAGES",
@@ -431,5 +431,16 @@ const menuItems=[{
     price: 15,
     amount: 1
 }];
-
+function sentenceCase (str) {
+    if ((str===null) || (str===''))
+        return false;
+    else
+    str = str.toString();
+     
+    return str.replace(/\w\S*/g,
+    function(txt){return txt.charAt(0).toUpperCase() +
+        txt.substr(1).toLowerCase();});
+    }
+const menuItems=menuItems_capital;
+menuItems_capital.forEach((item,index)=>{menuItems[index].category=sentenceCase(item.category); menuItems[index].name=sentenceCase(item.name); })
 export default menuItems;

@@ -1,10 +1,16 @@
+.cart-page-container{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+}
+
 .cart {
     position: relative;
     top:0;
     height: 95vh;
     margin: 1rem 5%;
     border-radius: 0.5rem;
-    background: var(--white-bg-transparent, rgba(255, 254, 254, 0.30));
+    background: var(--white-bg-transparent);
     padding: 25px ;
     box-sizing: border-box;
 }
@@ -54,4 +60,14 @@ span {
 }
 .order-button:hover {
     background-color: rgb(255, 132, 0);
+}
+
+.order-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-bg-transparent);
+    height: 550px;
+    width: 350px;
+    align-self: center;
+    align-items: center;
 }
