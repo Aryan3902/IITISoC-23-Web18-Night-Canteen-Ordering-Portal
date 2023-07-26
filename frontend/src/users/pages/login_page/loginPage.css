@@ -1,4 +1,4 @@
-.container {
+.login-page-container {
   display: flex;
   height: 100vh;
   align-items: center;
@@ -15,11 +15,12 @@
 }
 
 .login-container {
+
   position: absolute;
   width: 374px;
   height: 526px;
 }
-#login {
+.login {
   color: #000;
   font-size: 49.522px;
   font-family: "Open Sans", sans-serif;
@@ -28,6 +29,7 @@
 }
 
 .login-text {
+
   position: absolute;
   left: 40px;
   top: 35px;
@@ -85,4 +87,23 @@
 }
 .login-button:hover {
   background-color: #cc6504;
+}
+.login-bar {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  left: 40px;
+  width: 274px;
+  height: 43px;
+  margin-top: 40px;
+}
+.bar {
+  position: relative;
+  left: 10px;
+  background-color: #fff3f380;
+  width: 244px;
+  height: 43px;
+  border-radius: 5px ;
+  border: 0;
 }
