@@ -4,7 +4,6 @@ import './Cart.css'
 import { AuthContext } from "../../../context/auth-context";
 
 
-
 export default function Cart({size, cart,setCart, handleChange,goForOrder}){
 
     const [price,setPrice]=useState(0);

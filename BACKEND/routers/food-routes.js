@@ -24,6 +24,9 @@ const contfood = require("../controllers/food-controller.js");
 app.get("/", contfood.foodget );
 
 // app.get("/login",contfood.foodlogin);
+
+
+// app.get("/login",contfood.foodlogin);
 app.use(checkAuth)
 // ANSWERING A POST REQUEST 
 app.post("/", contfood.foodpost );

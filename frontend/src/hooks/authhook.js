@@ -10,6 +10,7 @@ export const useAuth = () => {
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
 
   const Login = useCallback((name, token, email, expirationDate) => {
+
     // For token expiration, we maintain a token expiration date in our fronted
     // and check for the timer, the below expiration creates a new Date which is
     // 1 hr after the current time

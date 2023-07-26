@@ -19,7 +19,9 @@ import FilePage from './users/pages/file_page/filePage';
 
 
 export default function App() {
+
   const {token, Login, Logout, name,email} = useAuth()
+
   const [cart, setCart]=useState([]);
   const [chooseNavbar,setChooseNavbar]=useState(0)
   const [order,setOrder] = useState(null)
@@ -120,6 +122,7 @@ export default function App() {
     )
   }
   return (
+
     <AuthContext.Provider value={{isLoggedin: !!token, token: token, name: name, login: Login, logout: Logout,email:email}}>
     <BrowserRouter>
     <Background />

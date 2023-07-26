@@ -80,6 +80,8 @@
 
 
 
+import {useState} from "react";
+
 import {useState,useContext} from "react";
 // import {useWorkoutsContext} from "../hooks/useWorkoutsContext";
 // import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
@@ -91,7 +93,9 @@ const ItemForm=()=>{
     const [category,setCategory]=useState('');
     const [price,setPrice]=useState('');
     const [error,setError]=useState(null);
+
     const data=useContext(AuthContext)
+
 
 const handleSubmit=async(e)=>{
     e.preventDefault();
@@ -101,14 +105,13 @@ const handleSubmit=async(e)=>{
         method:"POST",
         body:JSON.stringify(workout),
         headers:{
+
             'Content-Type':'application/json',
             'Authorization':`BEARER ${data.token}`
         }
     })
     // const json=await response.json();
     
-    // console.log("ERROR");
-    console.log(response);
 
     if(!response.ok){
         // setError(json.error)

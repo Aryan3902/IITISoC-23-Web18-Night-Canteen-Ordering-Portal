@@ -1,8 +1,10 @@
+import {useParams} from "react-router-dom"
 import {useState,useEffect,useContext} from "react";
 // import {useWorkoutsContext} from "../hooks/useWorkoutsContext";
 // import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import {useParams} from "react-router-dom"
 import { AuthContext } from "../../../context/auth-context";
+
 const UpdateForm=()=>{
     // const {dispatch}=useWorkoutsContext();
     
@@ -13,6 +15,7 @@ const UpdateForm=()=>{
     const [error,setError]=useState(null);
     const params=useParams();
     const data=useContext(AuthContext)
+
 
 useEffect(()=>{
     getProductDetails();
@@ -40,6 +43,7 @@ const handleSubmit=async(e)=>{
         method:"PATCH",
         body:JSON.stringify(workout),
         headers:{
+
             'Content-Type':'application/json',
             'Authorization':`BEARER ${data.token}`
         }
