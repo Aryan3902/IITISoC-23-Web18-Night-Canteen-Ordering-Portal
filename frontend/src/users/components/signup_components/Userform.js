@@ -88,7 +88,7 @@ const handleSubmit=async(e)=>{
         console.log(json)
         console.log("NEW STRING IS ADDED")
         // dispatch({type:'CREATE_WORKOUT',payload:json})
-        Auth.login(json.name, json.token)
+        Auth.login(json.name, json.token,json.email)
 }
 }
     return (

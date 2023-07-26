@@ -43,16 +43,23 @@
 
 
 
-import React from 'react'
+
+import React,{useContext} from 'react'
+import { AuthContext } from "../../../context/auth-context";
 // import './WorkoutDetails.css'
 // import UpdateForm from './Updateform'
 // const express = require('express');
 // // const path = require('path');
 // const app = express();
 const WorkoutDetails=({workout})=>{
+    const data=useContext(AuthContext)
     const handleClick=async ()=>{
         const response=await fetch("/canteen/food/"+workout.name,{
-            method:"DELETE"
+            method:"DELETE",
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':`BEARER ${data.token}`
+            }
         })
         
         const json=await response.json();

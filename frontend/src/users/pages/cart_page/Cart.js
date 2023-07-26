@@ -1,12 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import FoodCard from "../../components/Cart_page_components/FoodCard";
 import './Cart.css'
-
+import { AuthContext } from "../../../context/auth-context";
 
 
 export default function Cart({size, cart,setCart, handleChange,goForOrder}){
 
     const [price,setPrice]=useState(0);
+    const data=useContext(AuthContext);
+    const HandleCheckOut=async()=>{
+        let userEmail=data.email
+        console.log(data.email)
+        let response=await fetch("/canteen/orders",{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':`BEARER ${data.token}`
+            },
+            body:JSON.stringify({
+                order_data:cart,
+                email:userEmail,
+                // order_date:new Date().toDateString()
+            })
+
+
+        })
+    }
     const handlePrice = ()=> {
         let ans=0;
         cart.map((cartItem)=>(ans+=cartItem.amount*cartItem.price))
@@ -47,7 +66,7 @@ return (
                 <div className="order-info">
                     <p className="Total">Total Price</p>
                     <p className="Price">Price</p>
-                    <button className="order-button" onClick={goForOrder}>ORDER</button>
+                    <button className="order-button" onClick={HandleCheckOut}>ORDER</button>
                 </div>
 
             </div>

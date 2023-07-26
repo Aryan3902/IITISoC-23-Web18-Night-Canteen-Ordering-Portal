@@ -42,7 +42,7 @@ function LoginPage({userNavbar,adminNavbar}) {
         // e.redirect('/home')
         console.log(json)
         console.log("NEW STRING IS ADDED")
-        Auth.login(json.name, json.token)
+        Auth.login(json.name, json.token,json.email)
         // dispatch({type:'CREATE_WORKOUT',payload:json})
         // Login(json.name,json.token,'1h')
         

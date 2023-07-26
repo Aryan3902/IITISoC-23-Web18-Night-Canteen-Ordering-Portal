@@ -6,9 +6,11 @@ export const useAuth = () => {
   // Instead of check for isLoggedin we now check if the token exists
   const [token, setToken] = useState(false);
   const [name, setUserId] = useState(null);
+  const [email, setEmail] = useState(null);
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
 
-  const Login = useCallback((name, token, expirationDate) => {
+  const Login = useCallback((name, token, email, expirationDate) => {
+
     // For token expiration, we maintain a token expiration date in our fronted
     // and check for the timer, the below expiration creates a new Date which is
     // 1 hr after the current time
@@ -17,6 +19,7 @@ export const useAuth = () => {
     setTokenExpirationDate(tokenExpirationDate);
     setToken(token);
     setUserId(name);
+    setEmail(email);
     // To local storage we can only write text or data that can be converted to text
     // Hence we use stringify
     localStorage.setItem(
@@ -24,6 +27,7 @@ export const useAuth = () => {
       JSON.stringify({
         name: name,
         token,
+        email:email,
         expiration: tokenExpirationDate.toISOString(),
       })
     );
@@ -33,6 +37,7 @@ export const useAuth = () => {
     setToken(null);
     setTokenExpirationDate(null);
     setUserId(null);
+    setEmail(null);
     localStorage.removeItem("UserData");
   }, []);
 
@@ -64,6 +69,7 @@ export const useAuth = () => {
       // the expiration time by 1hr on each render cycle
       Login(
         storedData.name,
+        storedData.email,
         storedData.token,
         new Date(storedData.expiration)
       );
@@ -74,6 +80,7 @@ export const useAuth = () => {
     token,
     Login,
     Logout,
-    name
+    name,
+    email
   }
 };

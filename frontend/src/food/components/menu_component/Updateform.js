@@ -1,7 +1,10 @@
-import {useState,useEffect} from "react";
+import {useParams} from "react-router-dom"
+import {useState,useEffect,useContext} from "react";
 // import {useWorkoutsContext} from "../hooks/useWorkoutsContext";
 // import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import {useParams} from "react-router-dom"
+import { AuthContext } from "../../../context/auth-context";
+
 const UpdateForm=()=>{
     // const {dispatch}=useWorkoutsContext();
     
@@ -11,13 +14,20 @@ const UpdateForm=()=>{
     const [price,setPrice]=useState();
     const [error,setError]=useState(null);
     const params=useParams();
+    const data=useContext(AuthContext)
+
 
 useEffect(()=>{
     getProductDetails();
 },[])
 const getProductDetails=async()=>{
     console.warn(params);
-    let result=await fetch(`http://localhost:3000/canteen/food/id/${params.id}`)
+    let result=await fetch(`http://localhost:3000/canteen/food/id/${params.id}`,{
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':`BEARER ${data.token}`
+        }
+    })
     result=await result.json();
     console.warn(result);
     setName(result.name);
@@ -33,7 +43,9 @@ const handleSubmit=async(e)=>{
         method:"PATCH",
         body:JSON.stringify(workout),
         headers:{
-            'Content-Type':'application/json'
+
+            'Content-Type':'application/json',
+            'Authorization':`BEARER ${data.token}`
         }
     })
     // const json=await response.json();

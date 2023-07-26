@@ -6,6 +6,7 @@ const bodyParser = require("body-parser")
 const ejs = require("ejs");
 const express = require("express")
 const app = express.Router();
+const checkAuth=require("../middleware/auth-check")
 
 
 app.use(bodyParser.urlencoded({
@@ -24,6 +25,9 @@ app.get("/", contfood.foodget );
 
 // app.get("/login",contfood.foodlogin);
 
+
+// app.get("/login",contfood.foodlogin);
+app.use(checkAuth)
 // ANSWERING A POST REQUEST 
 app.post("/", contfood.foodpost );
 

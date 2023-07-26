@@ -1,6 +1,8 @@
 import React,{useState,useEffect,useContext} from "react";
+import { AuthContext } from "../../../context/auth-context";
 const FilePage=()=>{
     const [file,setFile]=useState(null)
+    const data=useContext(AuthContext)
     const handleSubmit=async(e)=>{
         e.preventDefault();
         console.log(file)
@@ -9,7 +11,10 @@ const FilePage=()=>{
         const response=await fetch('/upload',{
             method:"POST",
             body:formData,
-           encType:"multipart/form-data"
+           encType:"multipart/form-data",
+           headers:{
+            'Authorization':`BEARER ${data.token}`
+        }
         }).then(res =>console.log(res))
         
         // setFile("");
