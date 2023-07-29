@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const canteenmenu = new mongoose.Schema({
   name: String,
   price: Number,
+  amount: Number,
   category: String,
   id: Number
 });

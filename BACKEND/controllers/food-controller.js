@@ -6,6 +6,7 @@ const express = require("express")
 const app = express.Router();
 
 const Menu = require("../models/model");
+const Order=require("../models/ordermodel")
 
 const foodget = (req, res) => {
     Menu.find({}).then((err, posts) => {
@@ -17,10 +18,21 @@ const foodget = (req, res) => {
     });
 }
 
+const orderget = (req, res) => {
+  Order.find({}).then((err, posts) => {
+      if (err) {
+          res.json(err);
+      } else {
+          res.json(posts);
+      }
+  });
+}
+
 const foodpost =  async (req, res) => {
     const newitem =new Menu({
         name: req.body.name,
         category: req.body.category,
+        amount: req.body.amount,
         price: req.body.price,
         id: req.body.id
     });
@@ -120,6 +132,7 @@ const foodgetqn = (req, res) =>{
 
 module.exports = {
     foodget,
+    orderget,
     foodpost,
     foodgetq,
     foodgetqn,

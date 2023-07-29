@@ -7,10 +7,10 @@ export const useAuth = () => {
   const [token, setToken] = useState(false);
   const [name, setUserId] = useState(null);
   const [email, setEmail] = useState(null);
+  const [userid, setUserid] = useState(null);
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
 
-  const Login = useCallback((name, token, email, expirationDate) => {
-
+  const Login = useCallback((name, token, email,userid, expirationDate) => {
     // For token expiration, we maintain a token expiration date in our fronted
     // and check for the timer, the below expiration creates a new Date which is
     // 1 hr after the current time
@@ -20,6 +20,7 @@ export const useAuth = () => {
     setToken(token);
     setUserId(name);
     setEmail(email);
+    setUserid(userid);
     // To local storage we can only write text or data that can be converted to text
     // Hence we use stringify
     localStorage.setItem(
@@ -28,6 +29,7 @@ export const useAuth = () => {
         name: name,
         token,
         email:email,
+        userid:userid,
         expiration: tokenExpirationDate.toISOString(),
       })
     );
@@ -38,6 +40,7 @@ export const useAuth = () => {
     setTokenExpirationDate(null);
     setUserId(null);
     setEmail(null);
+    setUserid(null);
     localStorage.removeItem("UserData");
   }, []);
 
@@ -71,6 +74,7 @@ export const useAuth = () => {
         storedData.name,
         storedData.email,
         storedData.token,
+        storedData.userid,
         new Date(storedData.expiration)
       );
     }
@@ -81,6 +85,7 @@ export const useAuth = () => {
     Login,
     Logout,
     name,
-    email
+    email,
+    userid
   }
 };

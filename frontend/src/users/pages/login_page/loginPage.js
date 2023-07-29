@@ -1,21 +1,25 @@
-import React,{useState,useContext} from "react";
+import React,{useState,useContext,useEffect} from "react";
 import './loginPage.css' ;
 import Button from "../../components/login_page_components/button";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { AuthContext } from "../../../context/auth-context";
 
-function LoginPage({userNavbar,adminNavbar}) {
-    const [email,setEmail]=useState('');
-  const [password,setPassword]=useState('');
-  const [error,setError]=useState(null);
 
+let a;
+function LoginPage({userNavbar,adminNavbar,setNavbar}) {
+    const [isAdmin,setIsAdmin]=useState(false)
+    const [email,setEmail]=useState('');
+    const [password,setPassword]=useState('');
+    const [err,setErr]=useState(null);
+    const history = useNavigate();
+  
   
 
   const Auth = useContext(AuthContext)
   const HandleSubmit=async(e)=>{
+  
 
-
-    e.preventDefault();
+ e.preventDefault();
 
 
     const workout={email,password};
@@ -29,26 +33,40 @@ function LoginPage({userNavbar,adminNavbar}) {
     })
     const json=await response.json();
     if(!response.ok){
-        // setError(json.error)
-        console.log("ERROR");
-        alert('Invalid Credentials');
+        setErr(json.errors[0].msg)
+    
+        console.log(json.errors[0].msg)
+  
     }
     if(response.ok){
-        // setId('');
+    
+
         setPassword('');
         setEmail('');
-        setError(null);
-        // response.redirected('/home')
-        // e.redirect('/home')
-        console.log(json)
+        if(json==="Incorrect email or password" || (json==="TRY AGAIN") ){
+            setErr(json)
+        }
+        else{
+            setErr(null);
+        }
+     
+        
         console.log("NEW STRING IS ADDED")
-        Auth.login(json.name, json.token,json.email)
-        // dispatch({type:'CREATE_WORKOUT',payload:json})
-        // Login(json.name,json.token,'1h')
+        Auth.login(json.name, json.token,json.email,json.userid)
+        if(email==="admin@iiti.ac.in"){
+             history('/admin/menu')
+
+        }
+        else{
+            history('/user/home')
+        }
+       
         
   }
 }
-    // setShowNavbar(false);
+useEffect(()=>{
+ setNavbar();
+})
     return (
     <div className="login-page-container">
         <div className="login-background"></div>
@@ -78,7 +96,11 @@ function LoginPage({userNavbar,adminNavbar}) {
                 </div>
             </div>
             <div className="login-button-container">
-                <button className="login-button">Login</button>
+                {err && <div style={{ color: 'red' }}>{err}</div>}
+
+                
+                <button className="login-button" onClick={HandleSubmit}>Login</button>
+                <Link to="/signup" className="signup">Sign Up ?</Link>
             </div>
         </form>
         </div>

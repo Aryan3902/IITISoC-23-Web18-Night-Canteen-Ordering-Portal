@@ -1,6 +1,12 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
 
-
+@keyframes slideDown {
+    from{top: -100px;
+    opacity: 0;}
+    to{top: 48px;
+    opacity: 1;}
+    
+}
 
 
 .navbar-container{
@@ -42,6 +48,7 @@
     flex-grow: 1;
 }
 .icons-container{
+    position: relative;
     display: flex;
     gap: 1rem;
     cursor: pointer;
@@ -91,14 +98,32 @@
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
 }
+.drop-down-menu{
+    list-style: none;
+    background-color: var(--white-bg-transparent-30);
+    position: absolute;
+    top: 48px;
+    left: 0;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    font-size: 16px;
+    animation-name: slideDown;
+    animation-duration: 0.3s;
+    backdrop-filter: blur(10px);
+}
 
-
+.drop-down-links{
+    color: black;
+    text-decoration: none;
+}
+.drop-down-links:active{
+    color: var(--primary-color);
+}
 
 @media screen and (max-width:955px){
 
 .navbar-container{
-    display: flex;
-    position: sticky;
     top: 1px;
     margin: 0 5%;
     height: 48px;

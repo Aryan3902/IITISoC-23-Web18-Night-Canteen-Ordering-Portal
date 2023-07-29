@@ -18,7 +18,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate=require("mongoose-findorcreate");
 const jwt=require("jsonwebtoken")
 const multer=require("multer");
-
 const order=require("./routers/OrderData.js")
 
 // BY HASHING AND SALTING WITH BCRYPT
@@ -38,61 +37,6 @@ app.use(bodyParser.urlencoded({
 app.use("/canteen/food", foods);
 app.use("/canteen/user", users);
 app.use("/canteen/orders", order);
-
-// app.use(
-// 	cookieSession({
-// 		name: "session",
-// 		keys: ["nightcanteen"],
-// 		maxAge: 24 * 60 * 60 * 100,
-// 	})
-// );
-app.use(
-  session({
-    secret: "secretcode",
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      sameSite: "none",
-      secure: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7 // One Week
-    }
-  }))
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-
-
-const User = require("./models/usermodel.js");
-
-// app.use(
-// 	cors({
-// 		origin: "http://localhost:3000",
-// 		methods: "GET,POST,PUT,DELETE",
-// 		credentials: true,
-// 	})
-// );
-passport.serializeUser((user, done) => {
-	done(null, user);
-});
-
-passport.deserializeUser((user, done) => {
-	done(null, user);
-});
-passport.use(
-	new GoogleStrategy(
-		{
-			clientID: "560528787084-3vs89teui1dglhv8i4t2tt0v9l41vfdv.apps.googleusercontent.com",
-			clientSecret: "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",
-			callbackURL: "/auth/google/home",
-			scope: ["profile", "email"],
-		},
-		function (accessToken, refreshToken, profile, callback) {
-			callback(null, profile);
-      console.log(profile);
-		}
-	)
-);
 
 // app.use(
 // 	cookieSession({
@@ -187,7 +131,7 @@ app.use(bodyParser.urlencoded({
   app.post("/upload",upload.single("file"),(req,res)=>{
     console.log(req.file)
     console.log(req.file.path)
-     res.status("FILE UPLOADED");
+     res.json("FILE UPLOADED");
   })
     // main().catch(err => console.log(err));
 

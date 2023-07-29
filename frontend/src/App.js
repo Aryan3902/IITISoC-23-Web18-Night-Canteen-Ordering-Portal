@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState,useContext} from 'react'
+import React, {useState,useEffect,useContext} from 'react'
 import { BrowserRouter, Routes, Route,} from "react-router-dom";
 import Background from './users/components/background_components/background'
 import Navbar from './users/components/navbar_component/Navbar'
@@ -16,16 +16,25 @@ import SignupPage from './users/pages/signup_page/signupPage';
 import UpdateForm from "./food/components/menu_component/Updateform"
 import ItemForm from './food/components/menu_component/Itemform';
 import FilePage from './users/pages/file_page/filePage';
+import AboutPage from './users/pages/about_page/aboutPage';
+import FAQPage from './users/pages/services_page/FAQPage';
 
 
 export default function App() {
-
-  const {token, Login, Logout, name,email} = useAuth()
-
-  const [cart, setCart]=useState([]);
+  const getLocalCartData = ()=>{
+    let localCartData= localStorage.getItem("FoodCart");
+    if(localCartData===null){
+      return [];
+    }
+    else{
+      return JSON.parse(localCartData);
+    }
+  }  
+  const {token, Login, Logout, name,email,userid} = useAuth()
   const [chooseNavbar,setChooseNavbar]=useState(0)
   const [order,setOrder] = useState(null)
-
+  const [cart, setCart]=useState(getLocalCartData);
+  
   const goForOrder=()=>{
     let orderMenu=cart;
     let today = new Date();
@@ -47,13 +56,23 @@ export default function App() {
   }
 
   const adminNavbar =()=>{
-    setChooseNavbar(0)
+    if(chooseNavbar!==2){
+    setChooseNavbar(2)
+  }
   }
 
   const userNavbar =()=>{
-    setChooseNavbar(1)
+    if(chooseNavbar!==1){
+      setChooseNavbar(1)
+    }
+    
   }
 
+  const noneNavbar =()=>{
+    if(chooseNavbar!==0){
+      setChooseNavbar(0)
+    }
+  }
 
   const handleClick= (item)=>{
         let isPresent=false;
@@ -77,58 +96,57 @@ export default function App() {
           if (prevValue[ind].amount === 0) prevValue[ind].amount = 1;
           return [...prevValue ];
   })}
-
+  useEffect(()=>{
+    localStorage.setItem("FoodCart",JSON.stringify(cart));
+  },[cart])
   let routes;
   if(token){
     routes=(
       <>
-       <Route exact path='/' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />} />
-        <Route exact path='/login' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />} />
+       <Route exact path='/' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>} />
+        <Route exact path='/login' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>} />
         <Route exact path='/profile' element={<FilePage />} />
         <Route exact path='/logout' element={<Logout />} />
         <Route exact path='/signup' element={<SignupPage />} />
         <Route exact path='/services/:id' element={<UpdateForm />} />
         {/* <Route exact path='/services' element={<UpdateForm />} /> */}
         <Route exact path='/about' element={<ItemForm />} />
-        <Route exact path="/user/about" element={<div></div>} />
-        <Route exact path='/user/services' element={<div></div>} />
-        <Route exact path="/user/home" element={<Home />} />
-        <Route exact path='/user/menu' element={<MenuPage handleClick={handleClick} cart={cart}/> } />
-        <Route exact path='/user/cart' element={<Cart size={cart.length} cart={cart} setCart={setCart} handleChange={handleChange} goForOrder={goForOrder}/>} />
-        <Route exact path='/admin/order' element={<AdminOrders order={order}/>} />
-        <Route exact path='/admin/menu' element={<AdminMenu/>} />
+        <Route exact path="/user/about" element={<AboutPage setNavbar={userNavbar} />} />
+        <Route exact path='/user/faq' element={<FAQPage setNavbar={userNavbar} />} />
+        <Route exact path="/user/home" element={<Home setNavbar={userNavbar}/>} />
+        <Route exact path='/user/menu' element={<MenuPage handleClick={handleClick} cart={cart} setNavbar={userNavbar}/> } />
+        <Route exact path='/user/cart' element={<Cart size={cart.length} cart={cart} setCart={setCart} handleChange={handleChange} goForOrder={goForOrder} setNavbar={userNavbar}/>} />
+        <Route exact path='/admin/order' element={<AdminOrders order={order} setNavbar={adminNavbar}/>} />
+        <Route exact path='/admin/menu' element={<AdminMenu setNavbar={adminNavbar}/>}/>
       </>
     )
   }else{
     routes=(
       <>
-       <Route exact path='/' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />} />
-        <Route exact path='/login' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />} />
-        <Route exact path='/logout' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />}  />
-        <Route exact path='/profile' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />} />
+       <Route exact path='/' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>} />
+        <Route exact path='/login' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>} />
+        <Route exact path='/logout' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>}  />
+        <Route exact path='/profile' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>} />
         <Route exact path='/signup' element={<SignupPage />} />
-        <Route exact path='/services/:id' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />}  />
+        <Route exact path='/services/:id' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>}  />
         {/* <Route exact path='/services' element={<UpdateForm />} /> */}
-        <Route exact path='/about' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />} />
-        <Route exact path="/user/about" element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />}  />
-        <Route exact path='/user/services' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />}  />
-        <Route exact path="/user/home" element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />}  />
-        <Route exact path='/user/menu' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />}  />
-        <Route exact path='/user/cart' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />} />
-        <Route exact path='/admin/order' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />} />
-        <Route exact path='/admin/updates' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />} />
-        <Route exact path='/admin/menu' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} />}  />
+        <Route exact path='/about' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>} />
+        <Route exact path="/user/about" element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>}  />
+        <Route exact path='/user/services' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>}  />
+        <Route exact path="/user/home" element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>}  />
+        <Route exact path='/user/menu' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>}  />
+        <Route exact path='/user/cart' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>} />
+        <Route exact path='/admin/order' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>} />
+        <Route exact path='/admin/updates' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>} />
+        <Route exact path='/admin/menu' element={<LoginPage userNavbar={userNavbar} adminNavbar={adminNavbar} setNavbar={noneNavbar}/>}  />
       </>
     )
   }
   return (
-
-    <AuthContext.Provider value={{isLoggedin: !!token, token: token, name: name, login: Login, logout: Logout,email:email}}>
+    <AuthContext.Provider value={{isLoggedin: !!token, token: token, name: name, login: Login, logout: Logout,email:email,userid:userid}}>
     <BrowserRouter>
     <Background />
-      {/* <Navbar size={cart.length} /> */}
-      {(!token) ? null:(chooseNavbar===1) ? <Navbar size={cart.length} />: <NavbarAdmin />}
-      
+      {(chooseNavbar===0) ? null:(chooseNavbar===1) ? <Navbar size={cart.length} />: (chooseNavbar===2) ? <NavbarAdmin />:null}
       <Routes>
        {routes}
       </Routes>

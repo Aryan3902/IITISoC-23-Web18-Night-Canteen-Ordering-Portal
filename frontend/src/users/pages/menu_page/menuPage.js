@@ -4,7 +4,7 @@ import FoodItems from "../../components/menu_page_components/FoodItems";
 import menuItems from "../../Arrays/menuitems";
 
 
-export default function MenuPage({handleClick},cart){
+export default function MenuPage({handleClick,setNavbar,cart}){
     function sentenceCase (str) {
         if ((str===null) || (str===''))
             return false;
@@ -39,7 +39,7 @@ export default function MenuPage({handleClick},cart){
         element.scrollIntoView({behavior:"smooth"});
     }
     useEffect(()=>{
-        
+        setNavbar();
         document.addEventListener("keypress",(a)=>{
             if (a.key==="Enter"){
                 let a = document.getElementById("search-box")

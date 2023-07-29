@@ -1,10 +1,8 @@
-import {useParams} from "react-router-dom"
 import {useState,useEffect,useContext} from "react";
 // import {useWorkoutsContext} from "../hooks/useWorkoutsContext";
 // import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import {useParams} from "react-router-dom"
 import { AuthContext } from "../../../context/auth-context";
-
 const UpdateForm=()=>{
     // const {dispatch}=useWorkoutsContext();
     
@@ -12,10 +10,10 @@ const UpdateForm=()=>{
     const [name,setName]=useState();
     const [category,setCategory]=useState();
     const [price,setPrice]=useState();
+    const [amount,setAmount]=useState();
     const [error,setError]=useState(null);
     const params=useParams();
     const data=useContext(AuthContext)
-
 
 useEffect(()=>{
     getProductDetails();
@@ -32,6 +30,7 @@ const getProductDetails=async()=>{
     console.warn(result);
     setName(result.name);
     setCategory(result.category);
+    setAmount(result.amount);
     setPrice(result.price);
     setId(result.id);
 }
@@ -43,7 +42,6 @@ const handleSubmit=async(e)=>{
         method:"PATCH",
         body:JSON.stringify(workout),
         headers:{
-
             'Content-Type':'application/json',
             'Authorization':`BEARER ${data.token}`
         }
@@ -60,7 +58,8 @@ const handleSubmit=async(e)=>{
         setId('');
         setName('');
         setPrice('');
-        setCategory('');
+        setPrice('');
+        setAmount('');
         setError(null);
         
         console.log("NEW STRING IS ADDED")
@@ -94,6 +93,12 @@ const handleSubmit=async(e)=>{
             type="number"
             onChange={(e)=>{setId(e.target.value)}}
             value={id}
+            />
+            <label> AMOUNT</label>
+            <input
+            type="number"
+            onChange={(e)=>{setAmount(e.target.value)}}
+            value={amount}
             />
             <button>UPDATE ITEM</button>
             {error && <div className="error">{error}</div>}

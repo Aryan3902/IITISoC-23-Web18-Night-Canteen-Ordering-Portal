@@ -4,7 +4,8 @@
 :root{
   --primary-color: #ffbb00fa;
   --font-style-1: 'Lora', serif;
-  --white-bg-transparent: rgb(255,255,255,0.25)
+  --white-bg-transparent-30: rgb(255,255,255,0.3);
+  --white-bg-transparent-50: rgb(255,255,255,0.5);
 }
 
 hr {

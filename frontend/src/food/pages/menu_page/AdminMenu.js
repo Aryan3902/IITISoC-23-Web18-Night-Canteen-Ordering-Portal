@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useContext} from 'react'
 // import WorkoutDetails from '../../../users/components/WorkoutDetails';
 import WorkoutDetails from '../../components/menu_component/WorkoutDetails';
 
@@ -29,9 +29,10 @@ export default function AdminMenu() {
           <button className="btn btn-danger mx-2 my-3" type="button">Delete Item</button>
         </div>
     </div>
-
-    <h3 className="ms-sm-4 ms-md-4 mt-2">Category</h3>
-    <hr/>
+    <div className="container">
+        <h3>Category</h3>
+        <hr/>
+      </div>
 
     <div className="container">
         <div className="row">
@@ -41,84 +42,8 @@ export default function AdminMenu() {
                 )
 
                 )}
-            {/* <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div>
-            <div className="card col-sm-6 col-md-4 col-lg-2 mx-2 my-2" style={{width: "160px", height: "200px"}}>
-                <img src="https://shriramsetu.org/img/11-(2).png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
-                <hr/>
-                <div className="card-body">
-                    <h5 className="card-text">Category Name</h5>
-                </div>
-            </div> */}
-            
+
+
         </div>
     </div>
     </div>

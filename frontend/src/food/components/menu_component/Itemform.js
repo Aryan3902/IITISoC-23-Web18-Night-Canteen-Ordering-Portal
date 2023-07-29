@@ -80,8 +80,6 @@
 
 
 
-import {useState} from "react";
-
 import {useState,useContext} from "react";
 // import {useWorkoutsContext} from "../hooks/useWorkoutsContext";
 // import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
@@ -92,26 +90,26 @@ const ItemForm=()=>{
     const [name,setName]=useState('');
     const [category,setCategory]=useState('');
     const [price,setPrice]=useState('');
+    const [amount,setAmount]=useState('');
     const [error,setError]=useState(null);
-
     const data=useContext(AuthContext)
-
 
 const handleSubmit=async(e)=>{
     e.preventDefault();
 
-    const workout={name,category,price,id};
+    const workout={name,category,price,id,amount};
     const response=await fetch('/canteen/food',{
         method:"POST",
         body:JSON.stringify(workout),
         headers:{
-
             'Content-Type':'application/json',
             'Authorization':`BEARER ${data.token}`
         }
     })
     // const json=await response.json();
     
+    // console.log("ERROR");
+    console.log(response);
 
     if(!response.ok){
         // setError(json.error)
@@ -121,6 +119,7 @@ const handleSubmit=async(e)=>{
         setId('');
         setName('');
         setPrice('');
+        setAmount('');
         setCategory('');
         setError(null);
         
@@ -155,6 +154,12 @@ const handleSubmit=async(e)=>{
             type="number"
             onChange={(e)=>{setId(e.target.value)}}
             value={id}
+            />
+            <label> AMOUNT</label>
+            <input
+            type="number"
+            onChange={(e)=>{setAmount(e.target.value)}}
+            value={amount}
             />
             <button>ADD ITEM</button>
             {error && <div className="error">{error}</div>}

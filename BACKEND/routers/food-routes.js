@@ -22,9 +22,7 @@ const contfood = require("../controllers/food-controller.js");
 
 // ANSWERING A GET REQUEST 
 app.get("/", contfood.foodget );
-
-// app.get("/login",contfood.foodlogin);
-
+app.get("/order", contfood.orderget );
 
 // app.get("/login",contfood.foodlogin);
 app.use(checkAuth)

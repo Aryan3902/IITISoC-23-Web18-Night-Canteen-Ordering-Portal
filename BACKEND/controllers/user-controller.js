@@ -41,6 +41,9 @@ const userget=(req,res)=>{
       
     }
     const username=req.body.email;
+    //  if (!username.endsWith('@iiti.ac.in')) {
+    //   return res.status(400).json({ error: 'Invalid email format. Only @iiti.ac.in emails are allowed.' });
+    // }
     // const password=md5(req.body.password);   BY HASHING
     const password=req.body.password
     User.findOne({email:username}).then(function(foundUser){
@@ -66,9 +69,9 @@ const userget=(req,res)=>{
       
           res.json({name: foundUser.name, 
               email: foundUser.email
-              ,token: token} )
+              ,token: token,userid:foundUser._id} )
           }else{
-            res.json("TRY AGAIN")
+            res.json("Incorrect email or password")
           }
         })
       
@@ -117,8 +120,12 @@ const userget=(req,res)=>{
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+   
     const {name,email,password}=req.body
+    //  if (!email.endsWith('@iiti.ac.in')) {
+    //   return res.status(400).json({ errors: 'Invalid email format. Only @iiti.ac.in emails are allowed.' });
 
+    // }
     bcrypt.hash(req.body.password,saltRounds,async function(err,hash){
       const newUser=new User({
         name:req.body.name,
@@ -135,7 +142,7 @@ const userget=(req,res)=>{
            email:email
           },process.env.SECRET,{expiresIn:'1h'})
           console.log(token)
-          res.status(201).json({ name:newUser.name,email:newUser.email,token: token})
+          res.status(201).json({ name:newUser.name,email:newUser.email,token: token,userid:newUser._id})
         } catch (err){
           (console.log("Signing up failed, please try again", 500))
         }

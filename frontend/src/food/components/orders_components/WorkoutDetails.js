@@ -45,6 +45,7 @@
 
 import React,{useContext} from 'react'
 import { AuthContext } from "../../../context/auth-context";
+import OrderMenu1 from './OrderMenu1';
 // import './WorkoutDetails.css'
 // import UpdateForm from './Updateform'
 // const express = require('express');
@@ -53,7 +54,7 @@ import { AuthContext } from "../../../context/auth-context";
 const WorkoutDetails=({workout})=>{
     const data=useContext(AuthContext)
     const handleClick=async ()=>{
-        const response=await fetch("/canteen/food/"+workout.name,{
+        const response=await fetch("/canteen/orders/"+workout._id,{
             method:"DELETE",
             headers:{
                 'Content-Type':'application/json',
@@ -86,17 +87,59 @@ const WorkoutDetails=({workout})=>{
         // </div>
         // </div>
      <div className="card col-sm-12 col-lg-4 mx-2 my-2" style={{width:"400px"}}>
-                <img src="https://www.iiti.ac.in/public/themes/iitindore/demos/update-logo.png" className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
+                <img src="https://www.iiti.ac.in/public/themes/iitindore/demos/update-logo.png"  className="card-img-top" alt="..." style={{height: "100px", width: "140px"}} />
                 <hr/>
                 <div className="card-body">
                     <table>
                         <tbody>
                             <tr>
                                 <td>
-                                    ITEM NAME
+                                    USER EMAIL
                                 </td>
                                 <td>
-                                    : {workout.name}
+                                    : {workout.email}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    USER NAME
+                                </td>
+                                <td>
+                                    : {workout.username}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    USER ID
+                                </td>
+                                <td>
+                                    : {workout.userid}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ORDER ID
+                                </td>
+                                <td>
+                                    : {workout._id}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    CATEGORY
+                                </td>
+                                <td>
+                                    : {workout.order_data.map((orderItem)=>{
+                                        return <OrderMenu1 orderItem={orderItem}/>
+                                    })}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ORDER DATE
+                                </td>
+                                <td>
+                                    : {workout.order_date}
                                 </td>
                             </tr>
                             <tr>
@@ -105,14 +148,6 @@ const WorkoutDetails=({workout})=>{
                                 </td>
                                 <td>
                                     : {workout.price}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    CATEGORY
-                                </td>
-                                <td>
-                                    : {workout.category}
                                 </td>
                             </tr>
                             
